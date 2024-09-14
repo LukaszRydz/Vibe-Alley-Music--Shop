@@ -21,12 +21,9 @@ export const Product = mongoose.model("Product", ProductSchema);
 
 // Client actions
 export const getProductById = async (id: string) => Product.findById(id);
+export const getProductsByIds = async (ids: string[]) => Product.find({ _id: { $in: ids } });
 
-// ? Get all products with pagination
-export const getAllProducts = async (filter: Record<string, any>, limit: number, page: number) =>
-    Product.find(filter)
-        .limit(limit)
-        .skip(limit * (page - 1));
+
 
 export const checkProductsExist = async (ids: string[]) => {
     const existingProducts = await Product.find({ _id: { $in: ids } });
@@ -35,7 +32,13 @@ export const checkProductsExist = async (ids: string[]) => {
 
 // Admin actions
 export const addProduct = async (values: Record<string, any>) => await Product.create(values);
-export const updateProduct = async (id: string, values: Record<string, any>) => Product.findByIdAndUpdate(id, values, { new: true });
+export const updateProduct = async (id: string, values: Record<string, any>) => {
+    const newValues = Object.fromEntries(Object.entries(values).filter(([_, value]) => value !== undefined))
+    console.log(newValues);
+    return await Product.findByIdAndUpdate(id, { $set: newValues }, { new: true })
+}
+
 export const deleteProduct = async (id: string) => Product.findByIdAndDelete(id);
-export const updateStock = async (id: string, quantity: number) => Product.findByIdAndUpdate(id, { quantity });
-export const updateDiscount = async (id: string, discount: number) => Product.findByIdAndUpdate(id, { discount });
+// add quantity to current stock
+export const updateStock = async (id: string, quantity: number) => Product.findByIdAndUpdate(id, { $inc: { quantity } }); 
+export const updateDiscount = async (id: string, discount: number) => Product.findByIdAndUpdate(id, { $set: { discount } });
