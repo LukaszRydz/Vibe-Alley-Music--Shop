@@ -12,6 +12,6 @@ export default (router: express.Router) => {
     router.post('/admin/product/add-discounts', verifyJWT, isEmployee, addDiscounts);
 
     // !Client actions
-    router.get('/client/product/get-products', getFullProductsInfo);
-    router.get('/client/products', getProductsPage);
+    router.get('/client/product/products-full-info', getFullProductsInfo);
+    router.get('/client/products-page', getProductsPage);
 }
