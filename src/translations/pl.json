@@ -1,0 +1,27 @@
+{
+    "error": {
+        "missingFields": "Brak wymaganych pól",
+        "nameLength": "Imię musi mieć od {min} do {max} znaków",
+        "emailLength": "Email musi mieć od {min} do {max} znaków",
+        "messageLength": "Wiadomość musi mieć od {min} do {max} znaków",
+        "failedToSend": "Nie udało się wysłać wiadomości",
+        "failedToGetProducts": "Nie udało się pobrać produktów",
+        "invalidLimit": "Limit musi być między {min} a {max}",
+        "invalidPageNumber": "Strona musi być między {min} a {max}",
+        "invalidSortType": "Nieprawidłowy typ sortowania",
+        "invalidSortOrder": "Nieprawidłowy porządek sortowania",
+        "invalidPriceRange": "Nieprawidłowy zakres cen",
+        "paymentType": "Nieprawidłowy typ płatności",
+        "notLoggedIn": "Nie jesteś zalogowany",
+        "productsNotFound": "Produkty nie znalezione",
+        "stripeSession": "Nie udało się utworzyć sesji Stripe",
+        "rateLimit": "Przekroczono limit żądań. Spróbuj ponownie później",
+        "unauthorized": "Nieautoryzowany dostęp",
+        "tokenNotFound": "Nie znaleziono tokena",
+        "unknown": "Nieznany błąd",
+        "tokenExpired": "Token wygasł"
+    },
+    "success": {
+        "messageSent": "Wiadomość wysłana pomyślnie"
+    }
+}

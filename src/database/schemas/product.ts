@@ -4,6 +4,7 @@ export const ProductSchema = new mongoose.Schema({
     title: { type: String, required: true },
     label: { type: String, required: true },
     artists: [{ type: String, required: true }],
+    tracks: [{ type: String, required: true }],
     genres: [{ type: String, required: true }],
     releaseDate: { type: Date, required: true },
     price: { type: Number, required: true },
@@ -34,7 +35,6 @@ export const checkProductsExist = async (ids: string[]) => {
 export const addProduct = async (values: Record<string, any>) => await Product.create(values);
 export const updateProduct = async (id: string, values: Record<string, any>) => {
     const newValues = Object.fromEntries(Object.entries(values).filter(([_, value]) => value !== undefined))
-    console.log(newValues);
     return await Product.findByIdAndUpdate(id, { $set: newValues }, { new: true })
 }
 

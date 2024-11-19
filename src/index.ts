@@ -6,7 +6,6 @@ import { initRouter } from './router';
 import { initMiddlewares } from './middlewares';
 import { initDatabase } from './database';
 
-
 const app = express();
 
 initMiddlewares(app);

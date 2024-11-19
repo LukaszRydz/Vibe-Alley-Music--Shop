@@ -2,7 +2,10 @@ import express from 'express';
 
 import { verifyJWT } from '../middlewares/verifyJWT';
 import { isEmployee } from '../middlewares/isEmployee';
-import { createProduct, addQuantity, updateProductData, addDiscounts, getFullProductsInfo, getProductsPage } from '../controllers/product';
+import { getCartProducts, getProductsFullInfo, getProducts } from '../controllers/client/product';
+import { createProduct, addQuantity, updateProductData, addDiscounts } from '../controllers/admin/product'
+import { getAlbumByName, getAlbumsByArtist, getNewestAlbums } from '../controllers/bot/products';
+import { isBot } from '../middlewares/isBot';
 
 export default (router: express.Router) => {
     //  !Admin actions
@@ -12,6 +15,12 @@ export default (router: express.Router) => {
     router.post('/admin/product/add-discounts', verifyJWT, isEmployee, addDiscounts);
 
     // !Client actions
-    router.get('/client/product/products-full-info', getFullProductsInfo);
-    router.get('/client/products-page', getProductsPage);
+    router.get('/client/product/products-full-info', getProductsFullInfo);
+    router.get('/client/products-page', getProducts);
+    router.get('/client/product/cart', getCartProducts);
+
+    // !Bot actions
+    router.get('/bot/product/album-by-name', isBot, getAlbumByName);
+    router.get('/bot/product/albums-by-artist', isBot, getAlbumsByArtist);
+    router.get('/bot/product/newest-albums', isBot, getNewestAlbums);
 }

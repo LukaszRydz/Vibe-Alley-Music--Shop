@@ -2,6 +2,7 @@ import express from 'express'
 import axios from 'axios'
 
 import { Endpoints, JWT } from '../helpers/variables'
+import { getTranslate } from '../translations';
 
 
 export const isEmployee = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -9,7 +10,7 @@ export const isEmployee = async (req: express.Request, res: express.Response, ne
     const token = req.cookies[JWT.COOKIE_NAME]
 
     if (!token) {
-        return res.send('Token not find').status(401)  
+        return res.send(getTranslate('error', 'tokenNotFound', 'en')).status(401)  
     }
 
     try {
@@ -24,7 +25,7 @@ export const isEmployee = async (req: express.Request, res: express.Response, ne
             return res.sendStatus(401)
         }
     } catch (err) {
-        return res.sendStatus(401)
+        return res.status(500).send({ message: getTranslate('error', 'unknown', 'en') })
     }
 
     next()

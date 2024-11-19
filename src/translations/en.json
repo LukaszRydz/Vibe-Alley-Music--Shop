@@ -1,0 +1,27 @@
+{
+    "error": {
+        "missingFields": "Missing required fields",
+        "nameLength": "Name must be between {min} and {max} characters",
+        "emailLength": "Email must be between {min} and {max} characters",
+        "messageLength": "Message must be between {min} and {max} characters",
+        "failedToSend": "Failed to send message",
+        "failedToGetProducts": "Failed to get products",
+        "invalidLimit": "Limit must be between {min} and {max}",
+        "invalidPageNumber": "Page must be between {min} and {max}",
+        "invalidSortType": "Invalid sort type",
+        "invalidSortOrder": "Invalid sort order",
+        "invalidPriceRange": "Invalid price range",
+        "paymentType": "Invalid payment type",
+        "notLoggedIn": "You are not logged in",
+        "productsNotFound": "Products not found",
+        "stripeSession": "Failed to create Stripe session",
+        "rateLimit": "Too many requests, please try again later",
+        "unauthorized": "Unauthorized access",
+        "tokenNotFound": "Token not found",
+        "unknown": "Unknown error",
+        "tokenExpired": "Token expired"
+    },
+    "success": {
+        "messageSent": "Message sent successfully"
+    }
+}
